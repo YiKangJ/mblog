@@ -1,0 +1,51 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+{% block title%} huanyingguanlinwodeboke{% endblock%} 
+{% block headmessage %}
+	<h3 style='font-family:楷体;'> 本站文章列表 </a>
+{% endblock %}
+{% block content%}
+	{% for post in posts %}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<p style='font-family:微软雅黑;font-size:14pt;font-weight:bold;'>
+				<a href='/post/{{post.slug}}'>{{post.title}}</a>
+				</p>
+			</div>
+			<div class="panel-body" style="background-color: #ffffdd">
+				<p>
+					{{ post.body | truncatechars:40 | safe }}
+				</p>
+			</div>
+			<div class="panel-footer" style="background-color: #efefef">
+				<p>
+					发布时间：{{ post.pub_date | date:"Y M d, h:m:s" }}
+				</p>
+			</div>
+		</div>
+		<br>
+	{% endfor %}
+{% endblock %}
+<!-- verson 1.0 -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>
+		欢迎光临
+	</title>
+</head>
+
+<body>
+	<h1>mblog</h1>
+	<hr>
+	{% for post in posts %}
+		<p style='font-family:微软雅黑;font-size:14pt;font-weight:bold;'>
+			<a href='/post/{{post.slug}}'>{{post.title}}</a>
+		</p>
+		
+	{% endfor %}
+	<hr>
+	<h3>现在时刻：{{now}}</h3>
+</body>
+</html> -->
